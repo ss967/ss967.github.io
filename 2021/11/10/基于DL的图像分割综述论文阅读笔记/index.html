@@ -1,0 +1,310 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>基于DL的图像分割综述论文阅读笔记 | 星空Blog</title><meta name="keywords" content="深度学习,图像分割,综述性论文"><meta name="author" content="ss967"><meta name="copyright" content="ss967"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="论文名称：Image Segmentation Using Deep Learning:A Survey 论文链接：https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2001.05566 文章主要成果  汇总了截至2019年100多种区域分割算法并将他们分为如下十类  全卷积网络（FCN） 基于图形模型的卷积模型 编码器-解码器基础模型 基于多尺度分析的金字塔网络模型 R-CNN基础模型 膨胀卷积（空洞">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于DL的图像分割综述论文阅读笔记">
+<meta property="og:url" content="http://ss967.github.io/2021/11/10/%E5%9F%BA%E4%BA%8EDL%E7%9A%84%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="星空Blog">
+<meta property="og:description" content="论文名称：Image Segmentation Using Deep Learning:A Survey 论文链接：https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2001.05566 文章主要成果  汇总了截至2019年100多种区域分割算法并将他们分为如下十类  全卷积网络（FCN） 基于图形模型的卷积模型 编码器-解码器基础模型 基于多尺度分析的金字塔网络模型 R-CNN基础模型 膨胀卷积（空洞">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ss967.github.io/2021/11/10/%E5%9F%BA%E4%BA%8EDL%E7%9A%84%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/cover.png">
+<meta property="article:published_time" content="2021-11-10T02:03:29.000Z">
+<meta property="article:modified_time" content="2021-11-15T00:57:14.732Z">
+<meta property="article:author" content="ss967">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="图像分割">
+<meta property="article:tag" content="综述性论文">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ss967.github.io/2021/11/10/%E5%9F%BA%E4%BA%8EDL%E7%9A%84%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/cover.png"><link rel="shortcut icon" href="/img/logo.ico"><link rel="canonical" href="http://ss967.github.io/2021/11/10/%E5%9F%BA%E4%BA%8EDL%E7%9A%84%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?506834e66449f901499a22592120422e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#9370DB","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '基于DL的图像分割综述论文阅读笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-11-15 08:57:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/font_2928498_ppl07sthm9q.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/top.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单列表</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/2021/11/10/%E5%9F%BA%E4%BA%8EDL%E7%9A%84%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/cover.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">星空Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单列表</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">基于DL的图像分割综述论文阅读笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-11-10T02:03:29.000Z" title="发表于 2021-11-10 10:03:29">2021-11-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-11-15T00:57:14.732Z" title="更新于 2021-11-15 08:57:14">2021-11-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">机器学习论文笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="基于DL的图像分割综述论文阅读笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>论文名称：Image Segmentation Using Deep Learning:A Survey</p>
+<p>论文链接：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2001.05566">https://arxiv.org/pdf/2001.05566</a></p>
+<h3 id="文章主要成果">文章主要成果</h3>
+<ul>
+<li>汇总了截至2019年100多种区域分割算法并将他们分为如下十类
+<ul>
+<li>全卷积网络（FCN）</li>
+<li>基于图形模型的卷积模型</li>
+<li>编码器-解码器基础模型</li>
+<li>基于多尺度分析的金字塔网络模型</li>
+<li>R-CNN基础模型</li>
+<li>膨胀卷积（空洞卷积Atours）模型和Deeplab系列</li>
+<li>循环神经网络模型（RNN）</li>
+<li>基于注意力机制的模型</li>
+<li>生成模型和对抗训练（GAN）</li>
+<li>基于主动轮廓的卷积模型</li>
+</ul>
+</li>
+<li>对这些基于深度学习的分割算法进行了全面的分析和总结</li>
+<li>提供了对20多种主流图像分割领域数据集的介绍</li>
+<li>提供了图像区域分割算法性能评价的常用指标</li>
+<li>提出未来基于深度学习的图像分割可能存在的方向和挑战</li>
+</ul>
+<h3 id="汇总分析">汇总分析</h3>
+<p>因为是综述性论文，此部分内容过于庞杂，短时间内无法完全理解全部内容，因此此部分仅对我理解的或者感兴趣的进行简要描述与分析，便于后续的学习与分析</p>
+<h4 id="主干架构">主干架构</h4>
+<h5 id="CNNs">CNNs</h5>
+<p><img src="/2021/11/10/%E5%9F%BA%E4%BA%8EDL%E7%9A%84%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/1.png" alt="卷积神经网络"></p>
+<p>卷积神经网络(CNNs)可以算是深度学习领域最成功被应用最广泛的架构之一。</p>
+<p>经典CNN架构主要由三部分组成：</p>
+<ul>
+<li>卷积层，需要带权重的卷积核，主要用来提取特征</li>
+<li>非线性激活层，增加网络模型的非线性表达能力</li>
+<li>池化层，减小特征图分辨率，降低计算量，同时后面层能获得更大的感受野</li>
+</ul>
+<p>主要优势：所有感受区域共享卷积核的参数，相比于全连接神经网络极大程度上降低参数量</p>
+<p>常见著名的CNN网络：AlexNet，GoogleNet，VGGNet，ResNet</p>
+<h5 id="RNNs-和-LSTM">RNNs 和 LSTM</h5>
+<p><img src="/2021/11/10/%E5%9F%BA%E4%BA%8EDL%E7%9A%84%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/2.png" alt="RNN"></p>
+<p>RNN被广泛应用于序列处理的神经网络，序列处理问题简单讲就是后面的数据和前面的数据有联系的问题。可以从上面图中看到每一个输入<strong>xt</strong>都会和上一层的隐藏层<strong>ht-1</strong>进行叠加从而输出新的<strong>Ot</strong>和隐藏层<strong>ht</strong>，这样确实能有效整合前面的特征与信息，但一旦序列过长就会遇到梯度消失或梯度爆炸问题，这就是<strong>长期依赖问题</strong></p>
+<p><img src="/2021/11/10/%E5%9F%BA%E4%BA%8EDL%E7%9A%84%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/3.png" alt="LSTM"></p>
+<p>为了解决长期依赖问题，便有了LSTM（长短期记忆），大概就如上图所示在RNN的基础上进行了改进。</p>
+<p>感觉近几年RNN和LSTM在CV领域用的不是很多（李弘毅2021机器学习课程里面提到的），所以这里也不进行过多分析，有关LSTM和RNN可以参考这篇博客<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9dc9f41f0b29">理解LSTM网络</a></p>
+<h5 id="Encoder-Decoder">Encoder-Decoder</h5>
+<p><img src="/2021/11/10/%E5%9F%BA%E4%BA%8EDL%E7%9A%84%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/4.png" alt="encoder-decoder"></p>
+<p>编码器-解码器模型主要是通过两级网络将输入域映射到输出域，由编码函数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">z=g(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span>将输入转换压缩为潜在的空间表示来提取捕获输入的语义信息，再由解码函数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y=f(z)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span></span></span></span>来预测潜在空间表示的输出。</p>
+<h5 id="GAN">GAN</h5>
+<h4 id="基于DL的图像分割模型">基于DL的图像分割模型</h4>
+<h5 id="FCN">FCN</h5>
+<h5 id="基于多尺度分析的金字塔网络模型">基于多尺度分析的金字塔网络模型</h5>
+<h5 id="膨胀卷积（空洞卷积Atours）模型和Deeplab系列">膨胀卷积（空洞卷积Atours）模型和Deeplab系列</h5>
+<h5 id="基于注意力机制的模型">基于注意力机制的模型</h5>
+<h3 id="主流数据集">主流数据集</h3>
+<h4 id="PASCAL-Visual-Object-Classes-VOC-：">PASCAL Visual Object Classes (VOC)：</h4>
+<p>​	<strong>计算机视觉中最受欢迎的数据集之一</strong>，带注释的图像可用于5个任务——分类，细分，检测，动作识别和人员布局。 文献中报道的几乎所有流行的分割算法都已在该数据集上进行了评估。 对于细分任务，有21类对象标签-车辆，家庭，动物，飞机，自行车，船，公共汽车，汽车，摩托车，火车，瓶，椅子，餐桌，盆栽，沙发，电视/显示器，鸟 ，猫，牛，狗，马，绵羊和人（如果像素不属于这些类别中的任何一个，则将其标记为背景）。此数据集分为两组，分别是训练集和验证集，分别有1464和1449张图像 。</p>
+<p><img src="/2021/11/10/%E5%9F%BA%E4%BA%8EDL%E7%9A%84%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/d1.png" alt="数据集图片1"></p>
+<h4 id="PASCAL-Context">PASCAL Context</h4>
+<p>​		PASCAL VOC 2010检测挑战的扩展，它包含所有训练图像的逐像素标签。 它包含400多个类（包括原始的20个类以及PASCAL VOC分割的背景），分为三类（对象，填充和混合）。 该数据集的许多对象类别太稀疏了； 因此，通常会选择59个常见类别的子集来使用。</p>
+<h4 id="Microsoft-Common-Objects-in-Context-MS-COCO">Microsoft Common Objects in Context (MS COCO)</h4>
+<p>​		另一种大规模的对象检测，分割和字幕数据集。 COCO包含日常复杂场景的图像，其中包含自然环境中的常见对象。 该数据集包含91种对象类型的照片，并以328k图像的形式总共标记了250万个实例。它主要用于分割单个对象实例。 图44显示了给定样本图像的MS COCO标签与先前数据集之间的差异。检测挑战包括80多个类别，提供超过82k图像进行训练，提供40.5k图像进行验证以及超过80k图像进行测试。<br>
+<img src="/2021/11/10/%E5%9F%BA%E4%BA%8EDL%E7%9A%84%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/d2.png" alt="数据集图片2"></p>
+<h4 id="Cityscapes">Cityscapes</h4>
+<p>​		一个大型数据库，<strong>专注于对城市街道场景的语义理解</strong> 。 它包含来自50个城市的街道场景中记录的各种立体声视频序列集，5k帧的高质量像素级注释以及一组2万帧的弱注释，包括30类的语义和密集像素注释， 分为8类-平面，人，车辆，建筑物，物体，自然，天空和空隙。<br>
+<img src="/2021/11/10/%E5%9F%BA%E4%BA%8EDL%E7%9A%84%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/d3.png" alt="数据集图片3"></p>
+<h4 id="ADE20K-MIT-Scene-Parsing-SceneParse150-：">ADE20K /MIT Scene Parsing (SceneParse150)：</h4>
+<p>​		提供用于场景解析算法的标准培训和评估平台。 该基准的数据来自ADE20K数据集，其中包含超过2万张以场景为中心的图像，并用对象和对象部件进行了详尽注释。 基准分为用于训练的2万图像，用于验证的2千图像和用于测试的另一批图像。 该数据集中有150个语义类别。</p>
+<h4 id="SiftFlow：">SiftFlow：</h4>
+<p>​		包括来自LabelMe数据库子集的2688个带注释的图像。 256 * 256像素的图像基于8个不同的室外场景，其中包括街道，山脉，田野，海滩和建筑物。 所有图像都属于33个语义类别之一。</p>
+<h4 id="Stanford-background：">Stanford background：</h4>
+<p>​		包含来自现有数据集（例如LabelMe，MSRC和PASCAL VOC）的场景的室外图像。 它包含715张具有至少一个前景对象的图像。 数据集按像素进行注释，可用于语义场景理解。 使用Amazon的Mechanical Turk（AMT）获得了该数据集的语义和几何标签。</p>
+<h4 id="Berkeley-Segmentation-Dataset-BSD-：">Berkeley Segmentation Dataset (BSD)：</h4>
+<p>​		包含来自30个人类受试者的1,000个Corel数据集图像的12,000个手工标记的分割。 目的是为图像分割和边界检测研究提供经验基础。 一半的分割是通过向对象呈现彩色图像获得的，另一半是通过呈现灰度图像获得的。 基于此数据的公共基准包括300张图像的所有灰度和颜色细分。 图像分为200个图像的训练集和100个图像的测试集。</p>
+<h4 id="Youtube-Objects：">Youtube-Objects：</h4>
+<p>​		包含从YouTube收集的视频，其中包括十个PASCAL VOC类的对象（飞机，鸟，船，汽车，猫，牛，狗，马，摩托车和火车）。 原始数据集不包含逐像素注释（因为它最初是为检测对象而开发的，具有弱注释）。 然而，Jain等人手动注释了126个序列的子集，然后提取了帧的子集以进一步生成语义标签。 此数据集中总共有大约10,167个带注释的480x360像素帧。</p>
+<h4 id="KITTI">KITTI</h4>
+<p>​		<code>最流行的移动机器人和自动驾驶数据集之一</code>。 它包含数小时的交通场景视频，并以各种传感器模式（包括高分辨率RGB，灰度立体摄像头和3D激光扫描仪）进行记录。 原始数据集不包含用于语义分割的基本事实，但是研究人员出于研究目的手动注释了数据集的各个部分。Alvarez等人从道路检测挑战中生成了323个图像的地面真相，分为道路，vertical和天空3类</p>
+<h3 id="常用的评价指标">常用的评价指标</h3>
+<p>这部分还是挺有用的，详细记录一下</p>
+<p>理论上来说从应用的角度考虑评价一个图像分割算法好坏应该从准确度，处理速度以及存储空间占用情况三个方面考虑，但就理论研究而言目前更重视准确度，因此以下常用指标均从准确度出发给出</p>
+<h4 id="Pixel-accuracy-像素精度">Pixel accuracy 像素精度</h4>
+<p>​		这种方式就比较直白，直接对图像的每一个像素进行判断，<strong>用预测对的像素的数量除以总的像素数量</strong>来反映预测的准确度。公式表示为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>A</mi><mo>=</mo><mfrac><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mi>K</mi></msubsup><msub><mi>p</mi><mrow><mi>i</mi><mi>i</mi></mrow></msub></mrow><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mi>K</mi></msubsup><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><mi>K</mi></msubsup><msub><mi>p</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">PA=\frac{\sum_{i=0}^K{p_{ii}}}{\sum_{i=0}^K\sum_{j=0}^K{p_{ij}}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.9303em;vertical-align:-0.7519em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1784em;"><span style="top:-2.5703em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8852em;"><span style="top:-2.1786em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-2.8971em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3214em;"><span></span></span></span></span></span></span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mop mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8852em;"><span style="top:-2.1786em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-2.8971em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4603em;"><span></span></span></span></span></span></span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">ij</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2819em;"><span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.535em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9191em;"><span style="top:-2.1786em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3214em;"><span></span></span></span></span></span></span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ii</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>（其中K代表分类数，加上背景总共K+1类，pij代表将类别i的像素预测为类别j）</p>
+<h4 id="Mean-Pixel-accuracy-MPA">Mean Pixel accuracy MPA</h4>
+<p>​		这种方式是对PA的一种扩展，还是对图像的每个像素进行判断，但这次<strong>计算每个类别的正确率，最后求平均值</strong>。公式可以表示为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>P</mi><mi>A</mi><mo>=</mo><mfrac><mn>1</mn><mrow><mi>K</mi><mo>+</mo><mn>1</mn></mrow></mfrac><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mi>K</mi></msubsup><mfrac><msub><mi>p</mi><mrow><mi>i</mi><mi>i</mi></mrow></msub><mrow><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><mi>K</mi></msubsup><msub><mi>p</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">MPA=\frac{1}{K+1}\sum_{i=0}^{K}\frac{p_{ii}}{\sum_{j=0}^{K}{p_{ij}}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">MP</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.7331em;vertical-align:-0.7519em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9812em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7475em;"><span style="top:-2.5703em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8852em;"><span style="top:-2.1786em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-2.8971em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4603em;"><span></span></span></span></span></span></span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">ij</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2819em;"><span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4461em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ii</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<h4 id="IoU-交并比">IoU 交并比</h4>
+<p>​	<strong>语义分割最常用的评价指标</strong>，这个根据名字就可以理解，交并比就是指<strong>预测值跟真值的交集除以他们两个的并集</strong>，用这种方式反映预测的准确度也很好理解，一样的地方越多越好，不一样的地方越少越好。公式表示为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mi>o</mi><mi>U</mi><mo>=</mo><mi>J</mi><mo stretchy="false">(</mo><mi>A</mi><mo separator="true">,</mo><mi>B</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>A</mi><mo>∩</mo><mi>B</mi></mrow><mrow><mi>A</mi><mo>∪</mo><mi>B</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">IoU=J(A,B)=\frac{A\cap B}{A\cup B}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">A</span><span class="mbin mtight">∪</span><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">A</span><span class="mbin mtight">∩</span><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<h4 id="Mean-IoU-平均交并比">Mean-IoU 平均交并比</h4>
+<p>​		主要用于多分类问题，就是对所有类单独做IoU，最后求均值</p>
+<table>
+<thead>
+<tr>
+<th>真实情况\预测结果</th>
+<th>正例</th>
+<th>反例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正例</td>
+<td>TP（真正例）</td>
+<td>FN（假反例）</td>
+</tr>
+<tr>
+<td>反例</td>
+<td>FP（假正例）</td>
+<td>TN（真反例）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Precision-查准率">Precision 查准率</h4>
+<p>​	查准率定义为所有预测是正例的正确率，用公式表示为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mfrac><mrow><mi>T</mi><mi>P</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>P</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">P=\frac{TP}{TP+FP}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">TP</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">FP</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">TP</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<h4 id="Recall-查全率">Recall 查全率</h4>
+<p>​	查全率是指真正例在真实情况为正例中的比例，直白一点就是在一次实验中预测正例正确占全部正例的比率，用公式表示为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mfrac><mrow><mi>T</mi><mi>P</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>N</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">R=\frac{TP}{TP+FN}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">TP</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.10903em;">FN</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">TP</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<p>​</p>
+<h4 id="F1-Score">F1 Score</h4>
+<p>​	查准率和查全率通常是一对互相矛盾的指标，并不单独来评价预测准确率，F1 是二者的调和平均数常被作为重要的评价指标。用公式表示为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mn>1</mn><mo>=</mo><mfrac><mrow><mn>2</mn><mi>P</mi><mi>R</mi></mrow><mrow><mi>P</mi><mo>+</mo><mi>R</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">F1=\frac{2PR}{P+R}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mathnormal mtight" style="margin-right:0.00773em;">PR</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<h4 id="Dice-coefficient">Dice coefficient</h4>
+<p>Dice系数是另一种图像分割领域常用的评价指标（尤其是在医学图像分割领域），可以将其定义为<strong>预测图和真实图的重叠区域的两倍，再除以两个图像中像素的总数</strong>，用公式表示为 Dice=\frac{2\abs{A\cap B}}{\abs{A}+\abs{B}}</p>
+<p>在预测二值图是可以发现<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mi>i</mi><mi>c</mi><mi>e</mi><mo>=</mo><mi>F</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">Dice=F1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal">i</span><span class="mord mathnormal">ce</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord">1</span></span></span></span></p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a><a class="post-meta__tags" href="/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/">图像分割</a><a class="post-meta__tags" href="/tags/%E7%BB%BC%E8%BF%B0%E6%80%A7%E8%AE%BA%E6%96%87/">综述性论文</a></div><div class="post_share"><div class="social-share" data-image="/2021/11/10/%E5%9F%BA%E4%BA%8EDL%E7%9A%84%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/cover.png" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/11/13/U-Net/"><img class="prev-cover" src="/2021/11/13/U-Net/cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">U-Net论文阅读笔记</div></div></a></div><div class="next-post pull-right"><a href="/2021/11/09/Inf_Net/"><img class="next-cover" src="/2021/11/09/Inf_Net/cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Inf-Net论文阅读笔记</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E4%B8%BB%E8%A6%81%E6%88%90%E6%9E%9C"><span class="toc-number">1.</span> <span class="toc-text">文章主要成果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%87%E6%80%BB%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">汇总分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E5%B9%B2%E6%9E%B6%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text">主干架构</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CNNs"><span class="toc-number">2.1.1.</span> <span class="toc-text">CNNs</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#RNNs-%E5%92%8C-LSTM"><span class="toc-number">2.1.2.</span> <span class="toc-text">RNNs 和 LSTM</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Encoder-Decoder"><span class="toc-number">2.1.3.</span> <span class="toc-text">Encoder-Decoder</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#GAN"><span class="toc-number">2.1.4.</span> <span class="toc-text">GAN</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8EDL%E7%9A%84%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text">基于DL的图像分割模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#FCN"><span class="toc-number">2.2.1.</span> <span class="toc-text">FCN</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%A4%9A%E5%B0%BA%E5%BA%A6%E5%88%86%E6%9E%90%E7%9A%84%E9%87%91%E5%AD%97%E5%A1%94%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.2.</span> <span class="toc-text">基于多尺度分析的金字塔网络模型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%86%A8%E8%83%80%E5%8D%B7%E7%A7%AF%EF%BC%88%E7%A9%BA%E6%B4%9E%E5%8D%B7%E7%A7%AFAtours%EF%BC%89%E6%A8%A1%E5%9E%8B%E5%92%8CDeeplab%E7%B3%BB%E5%88%97"><span class="toc-number">2.2.3.</span> <span class="toc-text">膨胀卷积（空洞卷积Atours）模型和Deeplab系列</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.4.</span> <span class="toc-text">基于注意力机制的模型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E6%B5%81%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">3.</span> <span class="toc-text">主流数据集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PASCAL-Visual-Object-Classes-VOC-%EF%BC%9A"><span class="toc-number">3.1.</span> <span class="toc-text">PASCAL Visual Object Classes (VOC)：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PASCAL-Context"><span class="toc-number">3.2.</span> <span class="toc-text">PASCAL Context</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Microsoft-Common-Objects-in-Context-MS-COCO"><span class="toc-number">3.3.</span> <span class="toc-text">Microsoft Common Objects in Context (MS COCO)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cityscapes"><span class="toc-number">3.4.</span> <span class="toc-text">Cityscapes</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ADE20K-MIT-Scene-Parsing-SceneParse150-%EF%BC%9A"><span class="toc-number">3.5.</span> <span class="toc-text">ADE20K &#x2F;MIT Scene Parsing (SceneParse150)：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SiftFlow%EF%BC%9A"><span class="toc-number">3.6.</span> <span class="toc-text">SiftFlow：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Stanford-background%EF%BC%9A"><span class="toc-number">3.7.</span> <span class="toc-text">Stanford background：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Berkeley-Segmentation-Dataset-BSD-%EF%BC%9A"><span class="toc-number">3.8.</span> <span class="toc-text">Berkeley Segmentation Dataset (BSD)：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Youtube-Objects%EF%BC%9A"><span class="toc-number">3.9.</span> <span class="toc-text">Youtube-Objects：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#KITTI"><span class="toc-number">3.10.</span> <span class="toc-text">KITTI</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87"><span class="toc-number">4.</span> <span class="toc-text">常用的评价指标</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Pixel-accuracy-%E5%83%8F%E7%B4%A0%E7%B2%BE%E5%BA%A6"><span class="toc-number">4.1.</span> <span class="toc-text">Pixel accuracy 像素精度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mean-Pixel-accuracy-MPA"><span class="toc-number">4.2.</span> <span class="toc-text">Mean Pixel accuracy MPA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IoU-%E4%BA%A4%E5%B9%B6%E6%AF%94"><span class="toc-number">4.3.</span> <span class="toc-text">IoU 交并比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mean-IoU-%E5%B9%B3%E5%9D%87%E4%BA%A4%E5%B9%B6%E6%AF%94"><span class="toc-number">4.4.</span> <span class="toc-text">Mean-IoU 平均交并比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Precision-%E6%9F%A5%E5%87%86%E7%8E%87"><span class="toc-number">4.5.</span> <span class="toc-text">Precision 查准率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Recall-%E6%9F%A5%E5%85%A8%E7%8E%87"><span class="toc-number">4.6.</span> <span class="toc-text">Recall 查全率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#F1-Score"><span class="toc-number">4.7.</span> <span class="toc-text">F1 Score</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Dice-coefficient"><span class="toc-number">4.8.</span> <span class="toc-text">Dice coefficient</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By ss967</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">陕ICP备2020017270号</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
