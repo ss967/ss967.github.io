@@ -14,9 +14,41 @@
     
     <atom:link href="http://ss967.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
-    <description>软件工程大四在读，cv初学者</description>
-    <pubDate>Tue, 08 Mar 2022 04:50:58 GMT</pubDate>
+    <description>HIT研一在读，cv初学者</description>
+    <pubDate>Thu, 25 Aug 2022 11:47:26 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>服务器重置记录</title>
+      <link>http://ss967.github.io/2022/08/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</link>
+      <guid>http://ss967.github.io/2022/08/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</guid>
+      <pubDate>Wed, 24 Aug 2022 01:12:36 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h3 id=&quot;mysql&quot;&gt;mysql&lt;/h3&gt;
+&lt;p&gt;这次密码一定好好设置！！！&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;获取mysql官方包(mysql5.7以前一直在用，相对比较稳定，所以这里选择mysql5.7)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure</description>
+          
+        
+      
+      
+      
+      
+      
+      <category domain="http://ss967.github.io/tags/Linux/">Linux</category>
+      
+      <category domain="http://ss967.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</category>
+      
+      
+      <comments>http://ss967.github.io/2022/08/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>语义分割常用评价指标</title>
