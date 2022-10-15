@@ -15,8 +15,42 @@
     <atom:link href="http://ss967.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>HIT研一在读，cv初学者</description>
-    <pubDate>Fri, 23 Sep 2022 12:17:57 GMT</pubDate>
+    <pubDate>Sat, 15 Oct 2022 10:44:27 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Diffusion论文汇总</title>
+      <link>http://ss967.github.io/2022/10/14/Diffusion%E8%AE%BA%E6%96%87%E6%B1%87%E6%80%BB/</link>
+      <guid>http://ss967.github.io/2022/10/14/Diffusion%E8%AE%BA%E6%96%87%E6%B1%87%E6%80%BB/</guid>
+      <pubDate>Fri, 14 Oct 2022 12:15:51 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;Survey-of-Diffusion-Model-Papers&quot;&gt;Survey of Diffusion Model Papers&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Diffusion models: A comprehensive survey of</description>
+          
+        
+      
+      
+      
+      
+      <category domain="http://ss967.github.io/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">论文笔记</category>
+      
+      
+      <category domain="http://ss967.github.io/tags/diffusion/">diffusion</category>
+      
+      <category domain="http://ss967.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</category>
+      
+      <category domain="http://ss967.github.io/tags/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B/">生成模型</category>
+      
+      
+      <comments>http://ss967.github.io/2022/10/14/Diffusion%E8%AE%BA%E6%96%87%E6%B1%87%E6%80%BB/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>text2video论文阅读简记</title>

@@ -1,0 +1,417 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Diffusion论文汇总 | 星空Blog</title><meta name="keywords" content="diffusion,深度学习,生成模型"><meta name="author" content="ss967"><meta name="copyright" content="ss967"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Survey of Diffusion Model Papers   Diffusion models: A comprehensive survey of methods and applications（202209 arXiv）[Paper] [Code]  北大和斯坦福等高校联合写的一篇综述，主要从DM模型改进、DM应用以及DM与其他生成模型结合三个角度进行汇总分析    A Survey">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Diffusion论文汇总">
+<meta property="og:url" content="http://ss967.github.io/2022/10/14/Diffusion%E8%AE%BA%E6%96%87%E6%B1%87%E6%80%BB/index.html">
+<meta property="og:site_name" content="星空Blog">
+<meta property="og:description" content="Survey of Diffusion Model Papers   Diffusion models: A comprehensive survey of methods and applications（202209 arXiv）[Paper] [Code]  北大和斯坦福等高校联合写的一篇综述，主要从DM模型改进、DM应用以及DM与其他生成模型结合三个角度进行汇总分析    A Survey">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ss967.github.io/2022/10/14/Diffusion%E8%AE%BA%E6%96%87%E6%B1%87%E6%80%BB/cover.png">
+<meta property="article:published_time" content="2022-10-14T12:15:51.000Z">
+<meta property="article:modified_time" content="2022-10-15T10:44:27.641Z">
+<meta property="article:author" content="ss967">
+<meta property="article:tag" content="diffusion">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="生成模型">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ss967.github.io/2022/10/14/Diffusion%E8%AE%BA%E6%96%87%E6%B1%87%E6%80%BB/cover.png"><link rel="shortcut icon" href="/img/logo.ico"><link rel="canonical" href="http://ss967.github.io/2022/10/14/Diffusion%E8%AE%BA%E6%96%87%E6%B1%87%E6%80%BB/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?506834e66449f901499a22592120422e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#9370DB","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Diffusion论文汇总',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-15 18:44:27'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/font_2928498_ppl07sthm9q.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/rss2.xml" title="星空Blog" type="application/rss+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/top.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单列表</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/2022/10/14/Diffusion%E8%AE%BA%E6%96%87%E6%B1%87%E6%80%BB/cover.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">星空Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单列表</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Diffusion论文汇总</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-14T12:15:51.000Z" title="发表于 2022-10-14 20:15:51">2022-10-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-15T10:44:27.641Z" title="更新于 2022-10-15 18:44:27">2022-10-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">论文笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Diffusion论文汇总"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Survey-of-Diffusion-Model-Papers">Survey of Diffusion Model Papers</h2>
+<ul>
+<li>
+<p>Diffusion models: A comprehensive survey of methods and applications（<em>202209 arXiv</em>）[<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2209.00796.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/YangLing0818/Diffusion-Models-Papers-Survey-Taxonomy">Code</a>]</p>
+<ul>
+<li>北大和斯坦福等高校联合写的一篇综述，主要从DM模型改进、DM应用以及DM与其他生成模型结合三个角度进行汇总分析</li>
+</ul>
+</li>
+<li>
+<p>A Survey on Generative Diffusion Model（<em>202209 arXiv</em>）[<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2209.02646.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/chq1155/A-Survey-on-Generative-Diffusion-Model">Code</a>]</p>
+<ul>
+<li>这篇github上论文整理的挺好的</li>
+</ul>
+</li>
+</ul>
+<p>本文结合上述两篇综述对diffusion model相关论文进行整理</p>
+<blockquote>
+<p>*表示一年以上google scholar引用量100+或者一年以内50+ (统计时间20221015)</p>
+</blockquote>
+<blockquote>
+<p>次级标题进行补充说明 标题前的（）是文章受关注后的别称</p>
+</blockquote>
+<h2 id="Diffusion-Models-Methods-Methods-Improvement">Diffusion Models Methods &amp;Methods Improvement</h2>
+<ul>
+<li>
+<p>Denoising Diffusion Probabilistic Models <strong>(<em>2020 NurIPS</em>)</strong> [<a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper/2020/file/4c5bcfec8584af0d967f1ab10179ca4b-Paper.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/hojonathanho/diffusion">Code</a>] *</p>
+</li>
+<li>
+<p>Progressive distillation for fast sampling of diffusion models <strong>(<em>2022 ICLR</em>)</strong>. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2202.00512">[Paper]</a> <a target="_blank" rel="noopener" href="https://github.com/google-research/google-research/tree/master/diffusion_distillation">[Code]</a>  *</p>
+</li>
+<li>
+<p>Knowledge Distillation in Iterative Generative Models for Improved Sampling Speed (<em>202101 arXiv</em>) <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2101.02388">[Paper]</a> <a target="_blank" rel="noopener" href="https://github.com/tcl9876/Denoising_Student">[Code]</a></p>
+</li>
+<li>
+<p>High-Resolution Image Synthesis with Latent Diffusion Models**(<em>2022 CVPR</em>)**[<a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/CVPR2022/papers/Rombach_High-Resolution_Image_Synthesis_With_Latent_Diffusion_Models_CVPR_2022_paper.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/CompVis/latent-diffusion">Code</a>] *</p>
+</li>
+<li>
+<p>Diffusion Models Beat GANs on Image Synthesis <strong>(<em>2021 NIPS</em>)</strong> [<a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper/2021/file/49ad23d1ec9fa4bd8d77d02681df5cfa-Paper.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/openai/guided-diffusion">Code</a>]  *</p>
+</li>
+<li>
+<p>Accelerating Diffusion Models via Early Stop of the Diffusion Process( <em>202205 arXiv</em>) <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2205.12524">[Paper]</a> <a target="_blank" rel="noopener" href="https://github.com/zhaoyanglyu/early_stopped_ddpm">[Code]</a></p>
+</li>
+<li>
+<p>Truncated Diffusion Probabilistic Models (<em>202202 arXiv</em>) <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2202.09671">[Paper]</a></p>
+</li>
+<li>
+<p>Cold Diffusion: Inverting Arbitrary Image Transforms Without Noise(<em>202208 arXiv</em>) <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2208.09392">[Paper]</a> <a target="_blank" rel="noopener" href="https://github.com/arpitbansal297/cold-diffusion-models">[Code]</a></p>
+</li>
+<li>
+<p>How Much is Enough? A Study on Diffusion Times in Score-based Generative Models (<em>202206 arXiv</em>)  <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2206.05173">[Paper]</a></p>
+</li>
+<li>
+<p>Improved Denoising Diffusion Probabilistic Models <strong>(<em>2021 PMLR</em> )</strong><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2102.09672">[Paper]</a> <a target="_blank" rel="noopener" href="https://github.com/openai/improved-diffusion">[Code]</a> *</p>
+</li>
+<li>
+<p>Noise estimation for generative diffusion models (<em>202104 arXiv</em>) <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.02600">[Paper]</a></p>
+</li>
+<li>
+<p>Fast Sampling of Diffusion Models with Exponential Integrator (<em>202204 arXiv</em>) <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2204.13902">[Paper]</a> <a target="_blank" rel="noopener" href="https://github.com/qsh-zh/deis">[Code]</a></p>
+</li>
+<li>
+<p>Variational diffusion models  <strong>(<em>2021 NIPS</em>)</strong> <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2107.00630">[Paper]</a> <a target="_blank" rel="noopener" href="https://github.com/google-research/vdm">[Code]</a> *</p>
+</li>
+<li>
+<p>Structured denoising diffusion models in discrete state-spaces**(<em>2021 NIPS</em>)** <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2107.03006">[Paper]</a> <a target="_blank" rel="noopener" href="https://paperswithcode.com/paper/structured-denoising-diffusion-models-in">[Code]</a> *</p>
+</li>
+<li>
+<p>Denoising Diffusion Implicit Models**( <em>ICLR 2020</em>)**. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2010.02502">[Paper]</a> <a target="_blank" rel="noopener" href="https://github.com/ermongroup/ddim">[Code]</a> *</p>
+</li>
+<li>
+<p>gDDIM: Generalized denoising diffusion implicit models (<em>202206 arXiv</em>) . [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2206.05564">Paper</a>] <a target="_blank" rel="noopener" href="https://github.com/qsh-zh/gDDIM">[Code]</a></p>
+</li>
+<li>
+<p>Maximum Likelihood Training of Implicit Nonlinear Diffusion Models  (<em>202205 arXiv</em>). <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2205.13699">[Paper]</a></p>
+</li>
+<li>
+<p>Fast Sampling of Diffusion Models with Exponential Integrator  (<em>202204 arXiv</em>).<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2204.13902">[Paper]</a> <a target="_blank" rel="noopener" href="https://github.com/qsh-zh/deis">[Code]</a></p>
+</li>
+<li>
+<p>Pseudo numerical methods for diffusion models on manifolds**(<em>ICLR 2022</em>)**. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2202.09778">[Paper]</a> <a target="_blank" rel="noopener" href="https://github.com/luping-liu/PNDM">[Code]</a></p>
+</li>
+<li>
+<p>DPM-Solver: A Fast ODE Solver for Diffusion Probabilistic Model Sampling in Around 10 Steps  (<em>202206 arXiv</em>)<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2206.00927">[Paper]</a> [<a target="_blank" rel="noopener" href="https://github.com/luchengthu/dpm-solver">Code]</a></p>
+</li>
+<li>
+<p>Gotta Go Fast When Generating Data with Score-Based Models (<em>202105 arXiv</em>)<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2105.14080">[Paper]</a> <a target="_blank" rel="noopener" href="https://github.com/AlexiaJM/score_sde_fast_sampling">[Code]</a></p>
+</li>
+<li>
+<p>Learning Fast Samplers for Diffusion Models by Differentiating Through Sample Quality <strong>(<em>ICLR 2022</em>)</strong>. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2202.05830">[Paper]</a></p>
+</li>
+<li>
+<p>Learning to efficiently sample from diffusion probabilistic models  (<em>202106 arXiv</em>). <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2106.03802">[Paper]</a></p>
+</li>
+</ul>
+<h2 id="Combine-with-Other-Generative-Models">Combine with Other Generative Models</h2>
+<ul>
+<li>
+<p>Tackling the generative learning trilemma with denoising diffusion gans (<em>202112 arXiv</em>).  [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2112.07804.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/NVlabs/denoising-diffusion-gan">Code</a>]</p>
+</li>
+<li>
+<p>Diffusion-GAN: Training GANs with Diffusion (<em>202206 arXiv</em>). [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2206.02262">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/Zhendong-Wang/Diffusion-GAN">Code</a>]</p>
+</li>
+<li>
+<p>Accelerating Diffusion Models via Early Stop of the Diffusion Process (<em>202205 arXiv</em>)  [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2205.12524.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/ZhaoyangLyu/Early_Stopped_DDPM">Code</a>]</p>
+</li>
+<li>
+<p>Truncated diffusion probabilistic models  (<em>202202 arXiv</em>)  [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2202.09671.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/JegZheng/truncated-diffusion-probabilistic-models">Code</a>]</p>
+</li>
+<li>
+<p>DiffuseVAE: Efficient, Controllable and High-Fidelity Generation from Low-Dimensional Latents  (<em>202201 arXiv</em>)   [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2201.00308.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/kpandey008/DiffuseVAE">Code</a>]</p>
+</li>
+<li>
+<p>Diffusion normalizing flow**(<em>NPIS 2021</em>)**  [<a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper/2021/file/876f1f9954de0aa402d91bb988d12cd4-Paper.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/qsh-zh/DiffFlow">Code</a>]</p>
+</li>
+<li>
+<p>Maximum Likelihood Training of Implicit Nonlinear Diffusion Models (<em>202205 arXiv</em>). <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2205.13699">[Paper]</a></p>
+</li>
+<li>
+<p>Score-based generative modeling in latent space**(<em>2021 NIPS</em>)**.  [<a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper/2021/file/5dca4c6b9e244d24a30b4c45601d9720-Paper.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/NVlabs/LSGM">Code</a>] *</p>
+</li>
+<li>
+<p>Maximum likelihood training of score-based diffusion models <strong>(<em>2021 NIPS</em>)</strong>  [<a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper/2021/file/0a9fdbb17feb6ccb7ec405cfb85222c4-Paper.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/yang-song/score_flow">Code</a>]</p>
+</li>
+<li>
+<p>Maximum Likelihood Training of Parametrized Diffusion Model <strong>(<em>2022 ICLR</em>)</strong>  [<a target="_blank" rel="noopener" href="https://openreview.net/pdf?id=1v1N7Zhmgcx">Paper</a>]</p>
+</li>
+<li>
+<p>Understanding Diffusion Models: A Unified Perspective (<em>202208 arXiv</em>) [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2208.11970">Paper</a>]</p>
+</li>
+<li>
+<p>A variational perspective on diffusion-based generative models and score matching <strong>(<em>2021 NIPS</em>)</strong> [<a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper/2021/hash/c11abfd29e4d9b4d4b566b01114d8486-Abstract.html">Paper</a>]</p>
+</li>
+<li>
+<p>Autoregressive Diffusion Models <strong>(<em>2022 ICLR</em>)</strong> . [<a target="_blank" rel="noopener" href="https://openreview.net/forum?id=Lm8T39vLDTE">Paper</a>]</p>
+</li>
+<li>
+<p>Autoregressive Denoising Diffusion Models for Multivariate Probabilistic Time Series Forecasting  <strong>(<em>2021 ICML</em>)</strong>. [<a target="_blank" rel="noopener" href="http://proceedings.mlr.press/v139/rasul21a.html">Paper</a>]</p>
+</li>
+<li>
+<p>Learning Energy-Based Models by Diffusion Recovery Likelihood <strong>(<em>2021 ICLR</em>)</strong> [<a target="_blank" rel="noopener" href="https://openreview.net/forum?id=v_1Soh8QUNc">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/ruiqigao/recovery_likelihood">Code</a>]</p>
+</li>
+<li>
+<p>Latent Diffusion Energy-Based Model for Interpretable Text Modeling <strong>(<em>2022 ICML</em>)</strong> [<a target="_blank" rel="noopener" href="https://proceedings.mlr.press/v162/yu22h.html">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/yuPeiyu98/LDEBM">Code</a>]</p>
+</li>
+</ul>
+<h2 id="Application-of-Diffusion-Models">Application of Diffusion Models</h2>
+<h3 id="Computer-Vision">Computer Vision</h3>
+<h4 id="Low-level-Vision">Low-level Vision</h4>
+<ul>
+<li>Palette: Image-to-image diffusion models**(<em>2022 ACM SIGGRAPH</em>)**[ <a target="_blank" rel="noopener" href="https://dl.acm.org/doi/pdf/10.1145/3528233.3530757">Paper</a>] *</li>
+<li>Denoising Diffusion Restoration Models**(<em>2022 ICLR</em>)** [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2201.11793.pdf">Paper</a>]</li>
+<li>Srdiff: Single image super-resolution with diffusion probabilistic models <strong>(<em>Neurocomputing 2022</em>)</strong>.</li>
+<li>Image Super-Resolution via Iterative Refinement <strong>(<em>2022 TPMI</em>)</strong> [<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9887996">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/Janspiry/Image-Super-Resolution-via-Iterative-Refinement">Code</a>]</li>
+<li>Repaint: Inpainting using denoising diffusion probabilistic models <strong>(<em>2022 CVPR</em>)</strong> [<a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/CVPR2022/papers/Lugmayr_RePaint_Inpainting_Using_Denoising_Diffusion_Probabilistic_Models_CVPR_2022_paper.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/andreas128/RePaint">Code</a>]</li>
+</ul>
+<h4 id="High-level-Vision">High-level Vision</h4>
+<ul>
+<li>Score-based generative modeling in latent space(<strong><em>2021 NIPS</em>)</strong>.  [<a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper/2021/file/5dca4c6b9e244d24a30b4c45601d9720-Paper.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/NVlabs/LSGM">Code</a>]</li>
+<li>Few-Shot Diffusion Models (<em>202205 arXiv</em>) [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2205.15463.pdf">Paper</a>]</li>
+<li>GLIDE: Towards photorealistic image generation and editing with text-guided diffusion models(<em>202112 arXiv</em>) [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2112.10741.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/openai/glide-text2im">Code</a>] *</li>
+<li>(DALLE) Zero-Shot Text-to-Image Generation <strong>(<em>2021 ICML</em>)</strong>  [<a target="_blank" rel="noopener" href="http://proceedings.mlr.press/v139/ramesh21a/ramesh21a.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/openai/DALL-E">Code</a>] *</li>
+<li>(DALLE·2) Hierarchical text-conditional image generation with clip latents （<em>202204 arXiv</em>） [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2204.06125.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/lucidrains/DALLE2-pytorch">Code</a>] *</li>
+<li>(Imagen) Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding(<em>202205 arXiv</em>)[<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2205.11487.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/lucidrains/imagen-pytorch">Code</a>] *</li>
+<li>DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation (<em>202208 arXiv</em>)[<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2208.12242">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/XavierXiao/Dreambooth-Stable-Diffusion">Code</a>]</li>
+<li>ProDiff: Progressive Fast Diffusion Model For High-Quality Text-to-Speech <strong>(<em>2022 ACM MM</em>)</strong>. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2207.06389">[Paper]</a> <a target="_blank" rel="noopener" href="https://github.com/Rongjiehuang/ProDiff">[Code]</a></li>
+<li>Diffusion Causal Models for Counterfactual Estimation <strong>(<em>2022 CLeaR</em>)</strong> . [<a href>Paper</a>] [<a href>Code</a>]</li>
+</ul>
+<h4 id="3D-Vision">3D Vision</h4>
+<ul>
+<li>Diffusion probabilistic models for 3d point cloud generation <strong>(<em>2021 CVPR</em>)</strong>.  [<a href="%5Dhttps://openaccess.thecvf.com/content/CVPR2021/papers/Luo_Diffusion_Probabilistic_Models_for_3D_Point_Cloud_Generation_CVPR_2021_paper.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/luost26/diffusion-point-cloud">Code</a>] *</li>
+<li>A conditional point diffusion-refinement paradigm for 3d point cloud completion  (<em>202112 arXiv</em>).  [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2112.03530.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/zhaoyanglyu/point_diffusion_refinement">Code</a>]</li>
+<li>3D Shape Generation and Completion Through Point-Voxel Diffusion <strong>(<em>2021 ICCV</em>)</strong>  [<a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/ICCV2021/papers/Zhou_3D_Shape_Generation_and_Completion_Through_Point-Voxel_Diffusion_ICCV_2021_paper.pdf">Paper</a>]</li>
+<li>Score-based point cloud denoising <strong>(<em>2021 ICCV</em>)</strong>  [<a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/ICCV2021/papers/Luo_Score-Based_Point_Cloud_Denoising_ICCV_2021_paper.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/luost26/score-denoise">Code</a>]</li>
+</ul>
+<h4 id="Video-Modeling">Video Modeling</h4>
+<ul>
+<li>Video Diffusion Models**( <em>ICLR Workshop 2022</em>)**  [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2204.03458.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/lucidrains/imagen-pytorch">Code</a>]</li>
+<li>Diffusion probabilistic modeling for video generation (<em>202203 arXiv</em>)  [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2203.09481.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/buggyyang/rvd">Code</a>] (code 待完善)</li>
+<li>Flexible diffusion modeling of long videos (<em>202205 arXiv</em>).  [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2205.11495">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/plai-group/flexible-video-diffusion-modeling">Code</a>]</li>
+<li>MCVD: Masked Conditional Video Diffusion for Prediction, Generation, and Interpolation (<em>202205 arXiv</em>).  [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2205.09853">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/voletiv/mcvd-pytorch">Code</a>]</li>
+<li>Diffusion models for video prediction and infilling (<em>202206 arXiv</em>)  [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2206.07696">Paper</a>]</li>
+</ul>
+<h4 id="Medical-Application">Medical Application</h4>
+<ul>
+<li>Score-based diffusion models for accelerated MRI <strong>（<em>2022 MedIA</em>）</strong>  [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2110.05243.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/HJ-harry/score-MRI">Code</a>]</li>
+<li>Solving Inverse Problems in Medical Imaging with Score-Based Generative Models <strong>(<em>ICLR 2021</em>)</strong>.  [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2111.08005">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/yang-song/score_inverse_problems">Code</a>]</li>
+<li>MR Image Denoising and Super-Resolution Using Regularized Reverse Diffusion (<em>202206 arXiv</em>)  [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2203.12621">Paper</a>]</li>
+<li>What is Healthy? Generative Counterfactual Diffusion for Lesion Localization <strong>(<em>2022 MICCAI</em> )</strong>  [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2207.12268.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/vios-s/diff-scm">Code</a>]</li>
+</ul>
+<h3 id="Sequential-Modeling">Sequential Modeling</h3>
+<h4 id="Natural-Language-Processing">Natural Language Processing</h4>
+<ul>
+<li>
+<p>Diffusion-LM Improves Controllable Text Generation (<em>202205 arXiv</em>) [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2205.14217">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/xiangli1999/diffusion-lm">Code</a>]</p>
+</li>
+<li>
+<p>Analog Bits: Generating Discrete Data using Diffusion Models with Self-Conditioning (<em>202208 arXiv</em>)  [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2208.04202">Paper</a>]</p>
+</li>
+<li>
+<p>Structured denoising diffusion models in discrete state-spacesp <strong>(<em>2021 NIPS</em>)</strong> [<a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper/2021/hash/958c530554f78bcd8e97125b70e6973d-Abstract.html">Paper</a>]</p>
+</li>
+</ul>
+<h4 id="Time-Series">Time Series</h4>
+<ul>
+<li>CSDI: Conditional score-based diffusion models for probabilistic time series imputation <strong>(<em>2021 NIPS</em>)</strong>  [<a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper/2021/file/cfe8504bda37b575c70ee1a8276f3486-Paper.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/ermongroup/CSDI">Code</a>]</li>
+<li>Diffusion-based Time Series Imputation and Forecasting with Structured State Space Models. (<em>202208 arXiv</em>)  [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2208.09399">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/ai4healthuol/sssd">Code</a>]</li>
+<li>Neural Markov Controlled SDE: Stochastic Optimization for Continuous-Time Data  <strong>(<em>2022 ICLR</em>)</strong>  [<a target="_blank" rel="noopener" href="https://openreview.net/pdf?id=7DI6op61AY">Paper</a>]</li>
+</ul>
+<h3 id="Audio">Audio</h3>
+<h4 id="Sound-Generation">Sound Generation</h4>
+<ul>
+<li>DiffWave: A Versatile Diffusion Model for Audio Synthesis <strong>(<em>2020 ICLR</em>)</strong>  [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2009.09761">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/lmnt-com/diffwave">Code</a>] *</li>
+<li>WaveGrad: Estimating Gradients for Waveform Generation  <strong>(<em>2021 ICLR</em>)</strong>  [<a target="_blank" rel="noopener" href="https://openreview.net/pdf?id=NsMLjcFaO8O">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/ivanvovk/WaveGrad">Code</a>] *</li>
+<li>Grad-tts: A diffusion probabilistic model for text-to-speech  <strong>(<em>2021 ICML</em>)</strong>  [<a target="_blank" rel="noopener" href="http://proceedings.mlr.press/v139/popov21a/popov21a.pdf">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/huawei-noah/speech-backbones">Code</a>]</li>
+<li>Diff-TTS: A Denoising Diffusion Model for Text-to-Speech**( <em>Interspeech 2021</em>)**  [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.01409">Paper</a>]</li>
+<li>Diffusion-Based Voice Conversion with Fast Maximum Likelihood Sampling Scheme  <strong>(<em>2021 ICLR</em>)</strong>   [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2109.13821">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/huawei-noah/Speech-Backbones">Code</a>]</li>
+<li>Diffsinger: Singing voice synthesis via shallow diffusion mechanism <strong>(<em>AAAI 2022</em>)</strong>  [<a target="_blank" rel="noopener" href="https://ojs.aaai.org/index.php/AAAI/article/view/21350/21099">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/MoonInTheRiver/DiffSinger">Code</a>]</li>
+<li>Diffsound: Discrete Diffusion Model for Text-to-sound Generation (<em>202207 arXiv</em>)  [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2207.09983">Paper</a>]</li>
+</ul>
+<h4 id="Text-to-Speech">Text to Speech</h4>
+<ul>
+<li>EdiTTS: Score-based Editing for Controllable Text-to-Speech (<em>202110 arXiv</em>)  [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2110.02584">Paper</a>] [<a target="_blank" rel="noopener" href="https://github.com/neosapience/editts">Code</a>]</li>
+<li>Guided-TTS: A Diffusion Model for Text-to-Speech via Classifier Guidance  <strong>(<em>2022 ICML</em>)</strong>  [<a target="_blank" rel="noopener" href="https://proceedings.mlr.press/v162/kim22d/kim22d.pdf">Paper</a>]</li>
+<li>Guided-TTS 2: A Diffusion Model for High-quality Adaptive Text-to-Speech with Untranscribed Data (<em>202205 arXiv</em>)  [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2205.15370">Paper</a>]</li>
+<li>Zero-Shot Voice Conditioning for Denoising Diffusion TTS Models  (<em>202206 arXiv</em>)  [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2206.02246">Paper</a>]</li>
+<li>SpecGrad: Diffusion Probabilistic Model based Neural Vocoder with Adaptive Noise Spectral Shaping  (<em>202203 arXiv</em>)  [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2203.16749">Paper</a>]</li>
+<li>BinauralGrad: A Two-Stage Conditional Diffusion Probabilistic Model for Binaural Audio Synthesis  (<em>202205 arXiv</em>)  [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2205.14807">Paper</a>]</li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/diffusion/">diffusion</a><a class="post-meta__tags" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a><a class="post-meta__tags" href="/tags/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B/">生成模型</a></div><div class="post_share"><div class="social-share" data-image="/2022/10/14/Diffusion%E8%AE%BA%E6%96%87%E6%B1%87%E6%80%BB/cover.png" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/09/02/text2video%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AE%80%E8%AE%B0/"><img class="next-cover" src="/2022/09/02/text2video%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AE%80%E8%AE%B0/cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">text2video论文阅读简记</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Survey-of-Diffusion-Model-Papers"><span class="toc-number">1.</span> <span class="toc-text">Survey of Diffusion Model Papers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Diffusion-Models-Methods-Methods-Improvement"><span class="toc-number">2.</span> <span class="toc-text">Diffusion Models Methods &amp;Methods Improvement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Combine-with-Other-Generative-Models"><span class="toc-number">3.</span> <span class="toc-text">Combine with Other Generative Models</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Application-of-Diffusion-Models"><span class="toc-number">4.</span> <span class="toc-text">Application of Diffusion Models</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Computer-Vision"><span class="toc-number">4.1.</span> <span class="toc-text">Computer Vision</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Low-level-Vision"><span class="toc-number">4.1.1.</span> <span class="toc-text">Low-level Vision</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#High-level-Vision"><span class="toc-number">4.1.2.</span> <span class="toc-text">High-level Vision</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3D-Vision"><span class="toc-number">4.1.3.</span> <span class="toc-text">3D Vision</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Video-Modeling"><span class="toc-number">4.1.4.</span> <span class="toc-text">Video Modeling</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Medical-Application"><span class="toc-number">4.1.5.</span> <span class="toc-text">Medical Application</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sequential-Modeling"><span class="toc-number">4.2.</span> <span class="toc-text">Sequential Modeling</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Natural-Language-Processing"><span class="toc-number">4.2.1.</span> <span class="toc-text">Natural Language Processing</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Time-Series"><span class="toc-number">4.2.2.</span> <span class="toc-text">Time Series</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Audio"><span class="toc-number">4.3.</span> <span class="toc-text">Audio</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Sound-Generation"><span class="toc-number">4.3.1.</span> <span class="toc-text">Sound Generation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Text-to-Speech"><span class="toc-number">4.3.2.</span> <span class="toc-text">Text to Speech</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By ss967</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">陕ICP备2020017270号</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
